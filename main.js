@@ -1,4 +1,4 @@
-console.log('************Elementos del Documento**********');
+/* console.log('************Elementos del Documento**********');
 
 console.log(window.document);
 console.log(document); //igual que arriba
@@ -14,4 +14,7 @@ console.log(document.forms);
 console.log(document.styleSheets);
 setTimeout(() => {
     console.log(document.getSelection().toString());
-}, 3000);
+}, 3000); */
+
+
+console.log('************Elementos del Documento**********');
