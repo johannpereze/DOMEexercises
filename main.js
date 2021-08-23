@@ -38,7 +38,7 @@ console.log(document.querySelectorAll('.card')[2]); //Le podemos pedir uno en es
 console.log(document.querySelectorAll('li')); //trae todos los li 
 console.log(document.querySelectorAll('#menu li')); //trae solo los li hijhos del elemento con id menu
  */
-console.log("************Atributos y Data Attributes**********");
+/* console.log("************Atributos y Data Attributes**********");
 
 console.log(document.documentElement.lang); //es
 console.log(document.documentElement.getAttribute("lang")); //es. parece que no hace diferencia pero sí es mejor usar getattribute por el siguiente ejemplo
@@ -77,3 +77,52 @@ console.log($linkDOM.hasAttribute('rel')); //false
 
 console.log($linkDOM.getAttribute('data-description')); //Document Object Model
 console.log($linkDOM.dataset); //DOMStringMap {description: "Document Object Model"}
+ */
+
+
+
+console.log("************Interactuar con Estilos**********");
+
+const $linkDOM = document.querySelector(".link-dom");
+
+console.log($linkDOM.style); //Accede a todo el objeto con todas las propiedades CSS
+console.log($linkDOM.getAttribute("style")); //background-color: yellow; color: navy; trae lo mínimo
+
+//Obtener los estilos:
+
+console.log($linkDOM.style.backgroundColor);
+console.log($linkDOM.style.color);
+
+//Obtener estilos computados, que son no solo los que yo asigno sino todos los por defecto del navegador
+console.log(getComputedStyle($linkDOM));
+console.log(getComputedStyle($linkDOM).getPropertyValue("color"));
+
+//Editar los estilos con setProperty o notación del punto
+
+$linkDOM.style.setProperty("text-decoration", "none");
+$linkDOM.style.fontSize = "30px";
+
+//variables  CSS - Custom Properties
+
+const $html = document.documentElement,
+  $body = document.body;
+
+//Almacenar variables de root en variables JS
+
+let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
+let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
+
+console.log(varDarkColor);
+console.log(varYellowColor);
+
+//Usar las variables JS para modificar elementos del DOM
+
+$body.style.backgroundColor = varDarkColor;
+$body.style.color = varYellowColor;
+
+//Modificar las variables de root con JS
+
+$html.style.setProperty("--dark-color", "black");
+
+varDarkColor=getComputedStyle($html).getPropertyValue("--dark-color");
+$body.style.backgroundColor = varDarkColor;
